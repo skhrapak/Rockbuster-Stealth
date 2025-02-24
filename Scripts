@@ -1,0 +1,38 @@
+Here several exemplary SQL scripts are inclided
+
+The first sort films available in inventory and their categories acccording to the revenue 
+
+SELECT  D.title,			
+    		F.name,	
+		    SUM(A.amount) AS revenue	
+FROM payment A			
+INNER JOIN rental B ON A.rental_id = B.rental_id			
+INNER JOIN inventory C ON B.inventory_id = C.inventory_id			
+INNER JOIN film D ON C.film_id = D.film_id			
+INNER JOIN film_category E ON D.film_id = E.film_id			
+INNER JOIN category F ON E.category_id = F.category_id			
+GROUP BY D.title,			
+			   F.name
+ORDER BY SUM(A.amount) DESC			
+
+The second return the number of customers in each countri where Rockbuster is operating as well as the revenue they generate
+
+SELECT country,	
+  	   COUNT(DISTINCT A.customer_id) AS customer_count,
+	     SUM(amount) AS revenue
+FROM customer A	
+INNER JOIN address B ON A.address_id=B.address_id	
+INNER JOIN city C ON B.city_id = C.city_id	
+INNER JOIN country D ON C.country_id=D.country_id	
+INNER JOIN payment E ON A.customer_id = E.customer_id	
+GROUP BY country 	
+ORDER BY revenue DESC	
+
+The third one returns max, min, and average rental duration
+
+SELECT 	  MAX(AGE(return_date,rental_date)) AS max_rental_duration,		
+    			MIN(AGE(return_date,rental_date)) AS min_rental_duration,
+		    	AVG(AGE(return_date,rental_date)) AS avg_rental_duration
+FROM rental			
+
+
