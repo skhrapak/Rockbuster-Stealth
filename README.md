@@ -24,5 +24,10 @@ to help planning new company strategy. Among the questiona are
 
 ● Do sales figures vary between geographic regions?
 
+
 3. Content.
 
+This Repository contains Data Dictionary of the Rockbuster' database and several exemplary SQL scripts used for data analysis.
+The visualization based on the analysis is available at 
+
+https://public.tableau.com/app/profile/sergey.khrapak/viz/Rockbuster_Analysis_17384557334900/Rockbuster_Stealth
